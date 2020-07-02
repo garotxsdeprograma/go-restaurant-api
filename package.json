@@ -1,0 +1,18 @@
+{
+  "name": "arbyte-rest-api",
+  "version": "1.0.0",
+  "description": "Api usada para ensinar restful APIs na arbyte",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Sem testes irmão\"",
+    "start": "node server"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "Douglas Soares",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
