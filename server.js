@@ -9,8 +9,8 @@ const port = process.env.PORT || 5555;
 
 app.use(cors());
 app.use(bodyParser.json());
-
 app.use(morgan("dev"));
+
 app.use(routes);
 
 app.use((error, req, res, next) => {
