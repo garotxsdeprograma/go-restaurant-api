@@ -1,26 +1,16 @@
 const { Router } = require("express");
 const router = new Router();
-const knex = require("../database");
+const controller = require('../controllers/products')
+const knex = require("../../database");
 
 const routeName = "/products";
 const tableName = "products";
 
-router.get(routeName, (req, res) => {
-  knex(tableName).then((result) => res.json(result));
-});
+router.get(routeName, controller.getAll);
 
-router.get(`${routeName}/:id`, (req, res) => {
-  knex(tableName)
-    .where({ id: req.params.id })
-    .then(([found]) => res.json(found));
-});
+router.get(`${routeName}/:id`, controller.getById);
 
-router.post(routeName, (req, res) => {
-  knex(tableName)
-    .returning("*")
-    .insert(req.body)
-    .then(([inserted]) => res.status(201).json(inserted));
-});
+router.post(routeName, controller.create);
 
 router.patch(`${routeName}/:id`, async (req, res) => {
   try {
@@ -39,11 +29,6 @@ router.patch(`${routeName}/:id`, async (req, res) => {
   }
 });
 
-router.delete(`${routeName}/:id`, (req, res) => {
-  knex(tableName)
-    .where({ id: req.params.id })
-    .del()
-    .then(() => res.status(204).end());
-});
+router.delete(`${routeName}/:id`, controller.del);
 
 module.exports = router;
