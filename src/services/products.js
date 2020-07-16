@@ -17,7 +17,8 @@ const create = async (product) => {
 };
 
 const update = async (id, data) => {
-  delete data.id;
+  data.id = undefined;
+  data.created_at = undefined;
   const product = await repository.getById(id);
   if (!product) {
     throw { status: 404, message: "Not found" };
