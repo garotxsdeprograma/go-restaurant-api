@@ -17,6 +17,7 @@ const create = async (product) => {
 };
 
 const update = async (id, data) => {
+  delete data.id;
   const product = await repository.getById(id);
   if (!product) {
     throw { status: 404, message: "Not found" };
