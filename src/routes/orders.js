@@ -1,12 +1,10 @@
 const { Router } = require("express");
 const router = new Router();
+const controller = require("../controllers/orders");
 
 const routeName = "/orders";
 
-//Lista todos os Pedidos
-router.get(routeName, (req, res) => {
-  res.json([{ message: "Vai retornar todos os Pedidos" }]);
-});
+router.get(routeName, controller.getAll);
 
 // Pega os dados de um Pedido
 router.get(`${routeName}/:id`, (req, res) => {
