@@ -8,7 +8,7 @@ module.exports = function Order({
   value,
   created_at = utcNow,
   updated_at = utcNow,
-}) {
+} = {}) {
   this.id = id;
   this.product_id = product_id;
   this.quantity = quantity;
