@@ -14,12 +14,7 @@ router.get(`${routeName}/:id`, (req, res) => {
   });
 });
 
-//Cria um Pedido
-router.post(routeName, (req, res) => {
-  res.status(201).json({
-    message: "Vai criar um Pedido",
-  });
-});
+router.post(routeName, controller.create);
 
 //Edita os dados de um Pedido
 router.patch(`${routeName}/:id`, (req, res) => {
