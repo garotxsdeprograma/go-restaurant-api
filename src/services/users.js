@@ -1,6 +1,7 @@
 const User = require("../models/User");
 const { encryptPassword } = require("./utils/encrypt");
 const repository = require("../repositories/users");
+const { createToken } = require("./utils/jwt");
 
 const create = async (data) => {
   const user = new User({
@@ -27,10 +28,23 @@ const login = async (loginData) => {
   if (encryptedPassword !== user.password) {
     throw { status: 401, message: "Not authorized" };
   }
-  console.log("Logado", "Ainda falta gerar o JWT");
+  const token = createToken(user.id);
+  return {
+    user: user.view(),
+    token,
+  };
+};
+
+const getById = async (id) => {
+  const user = await repository.getOne({ id: id });
+  if (!user.id) {
+    throw { status: 404, message: "Not found" };
+  }
+  return user;
 };
 
 module.exports = {
   create,
   login,
+  getById,
 };

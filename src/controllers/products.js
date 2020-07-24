@@ -18,6 +18,7 @@ const getById = (req, res) => {
 
 const create = async (req, res) => {
   try {
+    console.log("Id do Usuário Logado", req.user.id);
     const product = new Product(req.body);
     if (!product.name || !product.price) {
       throw { status: 400, message: "Invalid data" };
