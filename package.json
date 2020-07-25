@@ -8,6 +8,7 @@
     "start": "nodemon -r dotenv/config server",
     "migration:create": "knex migrate:make",
     "migration:up": "knex migrate:latest",
+    "migration:up:prod":"knex migrate:latest --env production",
     "migration:down": "knex migrate:down"
   },
   "keywords": [

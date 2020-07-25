@@ -1,1 +1,1 @@
-web: npm run migration:up && node server 
+web: npm run migration:up:prod && node server 
